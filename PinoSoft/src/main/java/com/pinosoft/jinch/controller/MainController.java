@@ -28,8 +28,13 @@ import com.pinosoft.jinch.insa.Insa_ComVo;
 public class MainController {
 	@Autowired
 	InsaServiceImpl insaService;
+<<<<<<< Updated upstream
 
 	//깃 연동 테스트2
+=======
+	//깃허브 테스트용 주석입니다
+	
+>>>>>>> Stashed changes
 	@RequestMapping("/test.do")
 	public void test(InsaVo vo,HttpServletRequest request) {
 		
