@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinosoft.jinch.insa.InsaDao">
+<select id="getDeptCode" parameterType="com.pinosoft.jinch.insa.Insa_ComVo" resultType="String">
+<![CDATA[
+	select code from insa_com where name=#{name}
+]]>
+</select>
+<select id="job_type_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 직종 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='01'
+	]]>
+</select>
+<select id="dept_code_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 부서 리스트 -->
+	<![CDATA[
+		select name,code from insa_com where gubun='02'
+	]]>
+</select>
+<select id="position_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 직위 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='03'
+	]]>
+</select>
+<select id="join_gbn_code_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 입사구분 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='04'
+	]]>
+</select>
+<select id="put_yn_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 투입여부 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='05'
+	]]>
+</select>
+<select id="sex_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 성별 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='06'
+	]]>
+</select>
+<select id="email_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='07'
+	]]>
+</select>
+<select id="gart_level_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='08'
+	]]>
+</select>
+<select id="mil_yn_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='09'
+	]]>
+</select>
+<select id="mil_type_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='10'
+	]]>
+</select>
+<select id="mil_level_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='11'
+	]]>
+</select>
+<select id="kosa_reg_yn_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='12'
+	]]>
+</select>
+<select id="kosa_class_code_List" resultType="com.pinosoft.jinch.insa.Insa_ComVo"> <!-- 이메일 리스트 -->
+	<![CDATA[
+		select name from insa_com where gubun='13'
+	]]>
+</select>
+</mapper>

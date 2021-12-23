@@ -1,0 +1,8 @@
+@charset "EUC-KR";
+header{
+	background-color : #ffffff;
+	padding-top:20px;
+	height: 40px;
+	color: black;
+	text-align: center;
+}

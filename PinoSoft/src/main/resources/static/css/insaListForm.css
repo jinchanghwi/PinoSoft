@@ -1,0 +1,14 @@
+@charset "EUC-KR";
+#topDiv{
+	text-align: center;
+}
+caption{
+	text-align: left;
+}
+header{
+	background-color : #ffffff;
+	padding-top:20px;
+	height: 40px;
+	color: black;
+	text-align: center;
+}

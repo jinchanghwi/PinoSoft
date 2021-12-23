@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinosoft.jinch.insa.InsaDao">
+
+<select id="getSeq" resultType="String">
+<![CDATA[
+	select insa_seq.nextval from dual
+]]>
+</select>
+<select id="getId" resultType="String">
+<![CDATA[
+	select id from insa where id=#{id}
+]]> 
+</select>
+<select id="getInsa" parameterType="com.pinosoft.jinch.insa.InsaVo" resultType="com.pinosoft.jinch.insa.InsaVo">
+<![CDATA[
+	select * from insa where sabun=#{sabun}
+]]> 
+</select>
+
+<select id="getProfile" resultType="String">
+<![CDATA[
+	select profile_image from insa where sabun=#{sabun}
+]]>
+</select>
+<select id="getCmp" resultType="String">
+<![CDATA[
+	select cmp_reg_image from insa where sabun=#{sabun}
+]]>
+</select>
+<select id="getCarrier" resultType="String">
+<![CDATA[
+	select carrier_image from insa where sabun=#{sabun}
+]]>
+</select>
+
+<select id="getTotalRecord" resultType="int" parameterType="com.pinosoft.jinch.insa.InsaVo">
+<![CDATA[
+	select count(*) from insa where 1=1
+]]>
+				<if test='sabun != ""'>
+			    <![CDATA[  
+			      and sabun like '%' || #{sabun} || '%' 
+			    ]]>
+			    </if>
+			    
+			    <if test='name != ""'>
+			    <![CDATA[  
+			      and name like '%' || #{name} || '%' 
+			    ]]>
+			    </if>
+			    
+			    <if test='join_gbn_code != ""'>
+			    <![CDATA[  
+			      and join_gbn_code = #{join_gbn_code}
+			    ]]>
+			    </if>
+			    
+			    <if test='put_yn != ""'>
+			    <![CDATA[  
+			      and put_yn = #{put_yn} 
+			    ]]>
+			    </if>
+			    
+			    <if test='position != ""'>
+			    <![CDATA[  
+			      and position = #{position} 
+			    ]]>
+			    </if>
+			    
+			    <if test='join_day != ""'>
+			    <![CDATA[  
+			      and join_day = #{join_day} 
+			    ]]>
+			    </if>
+			    
+			    <if test='retire_day != ""'>
+			    <![CDATA[  
+			      and retire_day = #{retire_day} 
+			    ]]>
+			    </if>
+			    
+			    <if test='job_type != ""'>
+			    <![CDATA[  
+			      and job_type = #{job_type}
+			    ]]>
+			    </if>
+			
+</select>
+<select id="insaList" parameterType="com.pinosoft.jinch.insa.InsaVo" resultType="com.pinosoft.jinch.insa.InsaVo">
+<![CDATA[
+	select rownum , K2.* 
+	from (select rownum as rnum, K1.* 
+		from (select * 
+			from insa where 1=1 
+			]]>
+				<if test='sabun != ""'>
+			    <![CDATA[  
+			      and sabun like '%' || #{sabun} || '%' 
+			    ]]>
+			    </if>
+			    
+			    <if test='name != ""'>
+			    <![CDATA[  
+			      and name like '%' || #{name} || '%' 
+			    ]]>
+			    </if>
+			    
+			    <if test='join_gbn_code != ""'>
+			    <![CDATA[  
+			      and join_gbn_code = #{join_gbn_code}
+			    ]]>
+			    </if>
+			    
+			    <if test='put_yn != ""'>
+			    <![CDATA[  
+			      and put_yn = #{put_yn} 
+			    ]]>
+			    </if>
+			    
+			    <if test='position != ""'>
+			    <![CDATA[  
+			      and position = #{position} 
+			    ]]>
+			    </if>
+			    
+			    <if test='join_day != ""'>
+			    <![CDATA[  
+			      and join_day = #{join_day} 
+			    ]]>
+			    </if>
+			    
+			    <if test='retire_day != ""'>
+			    <![CDATA[  
+			      and retire_day = #{retire_day} 
+			    ]]>
+			    </if>
+			    
+			    <if test='job_type != ""'>
+			    <![CDATA[  
+			      and job_type = #{job_type}
+			    ]]>
+			    </if>
+			<![CDATA[
+			order by sabun asc) K1 
+		where rownum <= #{nowRecord}+9) K2 where rnum >= #{nowRecord}
+]]>
+</select>
+<insert id="insaInput" parameterType="com.pinosoft.jinch.insa.InsaVo">
+<![CDATA[
+	insert into 
+	insa(sabun, join_day, retire_day,put_yn,name,
+	reg_no,eng_name,phone,hp,position,cmp_reg_no,cmp_reg_image,sex,years,
+	email,zip,addr1,addr2,dept_code,
+	join_gbn_code,id,pwd,salary,kosa_reg_yn,
+	kosa_class_code,mil_yn,mil_type,mil_level,mil_startdate,
+	mil_enddate,job_type,gart_level,selp_intro,crm_name,
+	profile_image,carrier_image)
+	
+	values(#{sabun}, #{join_day}, #{retire_day}, #{put_yn},#{name},
+	#{reg_no}, #{eng_name}, #{phone}, #{hp}, #{position},#{cmp_reg_no}, #{cmp_reg_image}, #{sex},#{years},
+	#{email}, #{zip}, #{addr1}, #{addr2}, #{dept_code},
+	#{join_gbn_code}, #{id}, #{pwd}, #{salary}, #{kosa_reg_yn},
+	#{kosa_class_code}, #{mil_yn}, #{mil_type}, #{mil_level}, #{mil_startdate},
+	#{mil_enddate}, #{job_type}, #{gart_level}, #{selp_intro}, #{crm_name},
+	#{profile_image}, #{carrier_image})
+]]>
+</insert>
+<delete id="insaDelete" parameterType="com.pinosoft.jinch.insa.InsaVo">
+	<![CDATA[
+		delete from insa where sabun=#{sabun}
+	]]> 
+</delete>
+<update id="insaUpdate" parameterType="com.pinosoft.jinch.insa.InsaVo">
+	<![CDATA[
+		update insa set 
+		name=#{name},
+		eng_name=#{eng_name},
+		pwd=#{pwd},
+		hp=#{hp},
+		phone=#{phone},
+		reg_no=#{reg_no},
+		years=#{years},
+		email=#{email},
+		job_type=#{job_type},
+		sex=#{sex},
+		zip=#{zip},
+		addr1=#{addr1},
+		addr2=#{addr2},
+		position=#{position},
+		dept_code=#{dept_code},
+		salary=#{salary},
+		join_gbn_code=#{join_gbn_code},
+		gart_level=#{gart_level},
+		put_yn=#{put_yn},
+		mil_yn=#{mil_yn},
+		mil_type=#{mil_type},
+		mil_level=#{mil_level},
+		mil_startdate=#{mil_startdate},
+		mil_enddate=#{mil_enddate},
+		cmp_reg_no=#{cmp_reg_no},
+		crm_name=#{crm_name},
+		selp_intro=#{selp_intro},
+		profile_image=#{profile_image}, 
+		cmp_reg_image=#{cmp_reg_image},
+		carrier_image=#{carrier_image}
+		
+		where sabun=#{sabun}
+	]]> 
+</update>
+
+</mapper>
