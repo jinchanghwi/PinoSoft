@@ -29,7 +29,7 @@ public class MainController {
 	@Autowired
 	InsaServiceImpl insaService;
 
-	//깃 연동 테스트
+	//깃 연동 테스트2
 	@RequestMapping("/test.do")
 	public void test(InsaVo vo,HttpServletRequest request) {
 		
