@@ -5,7 +5,6 @@
 <head>
 <script type="text/javascript">
 $(document).ready(function(){
-	//jQuery 작성
 	test();
 });
 </script>
