@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일은 Mapper파일로 src/main/java/Mapper/PinoMapper.java 파일과 연결된다 -->
+<!-- DAO와 Mapper를 연결하기 위해선 namespace를 해당 DAO의 경로로 맞춰줘야한다 -->
+
+<mapper namespace="com.pinoSoft.pino.DAO.PinoDAO">
+
+</mapper>
